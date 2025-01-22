@@ -3,6 +3,7 @@ node {
         stage('Build') {
             sh 'docker rm priceless_almeida'
             sh 'docker images'
+            sh 'docker rmi cdrx/pyinstaller-linux:latest'
             throw e
             docker.image('python:2-alpine').inside {
                 echo "Building Python files..."
