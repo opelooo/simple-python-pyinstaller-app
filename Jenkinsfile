@@ -4,6 +4,7 @@ node {
     ])
     
     stage('Debug Workspace') {
+        checkout scm
         sh 'ls -R'
     }
 
