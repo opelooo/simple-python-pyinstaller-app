@@ -1,7 +1,7 @@
 node {
     try {
         stage('Build') {
-            sh 'docker rm priceless_chaum sharp_borg'
+            sh 'docker rm naughty_pasteur'
             docker.image('python:2-alpine').inside {
                 echo "Building Python files..."
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
@@ -17,7 +17,7 @@ node {
         }
 
         stage('Deliver') {
-            docker.image('cdrx/pyinstaller-linux:python2').inside {
+            docker.image('cdrx/pyinstaller-linux:latest').inside {
                 echo "Running PyInstaller..."
                 sh 'pyinstaller --onefile sources/add2vals.py'
             }
