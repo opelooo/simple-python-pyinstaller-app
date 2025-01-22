@@ -1,4 +1,7 @@
 node {
+    properties([
+        pipelineTriggers([pollSCM('H/2 * * * *')]) // Memeriksa perubahan setiap 2 menit
+    ])
     try {
         stage('Build') {
             docker.image('python:2-alpine').inside {
