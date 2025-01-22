@@ -2,10 +2,6 @@ node {
     properties([
         pipelineTriggers([pollSCM('H/2 * * * *')]) // Memeriksa perubahan setiap 2 menit
     ])
-    
-    stage('Debug Workspace') {
-        sh 'ls -R'
-    }
 
     stage('Build') {
         checkout scm
@@ -19,7 +15,6 @@ node {
             sh 'py.test --verbose --junit-xml test-reports/results.xml ./sources/test_calc.py'
         }
         junit 'test-reports/results.xml'
-        sh 'cat test-reports/results.xml'
     }
 
     stage('Deliver') {
