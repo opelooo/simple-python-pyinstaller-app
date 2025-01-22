@@ -1,6 +1,7 @@
 node {
     try {
         stage('Build') {
+            sh 'docker rm priceless_chaum sharp_borg'
             docker.image('python:2-alpine').inside {
                 echo "Building Python files..."
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
@@ -36,7 +37,7 @@ node {
             echo "Failed to get Docker container status: ${dockerError.getMessage()}"
         }
 
-        sh 'docker rm admiring_johnson suspicious_panini elegant_buck determined_lederberg cool_sammet stupefied_nobel adoring_shockley confident_wiles'
+        
 
         currentBuild.result = 'FAILURE'
         throw e // rethrow to mark the build as failed
