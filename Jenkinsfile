@@ -21,6 +21,6 @@ node {
         docker.image('cdrx/pyinstaller-linux:python2').inside {
             sh 'pyinstaller --onefile ./sources/add2vals.py'
         }
-        archiveArtifacts artifacts: 'dist/add2vals', fingerprint: true
+        archiveArtifacts artifacts: 'dist/add2vals'
     }
 }
