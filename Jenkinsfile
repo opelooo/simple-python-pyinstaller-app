@@ -36,8 +36,7 @@ node {
             echo "Failed to get Docker container status: ${dockerError.getMessage()}"
         }
 
-        sh 'docker rm admiring_johnson suspicious_panini elegant_buck determined_lederberg cool_sammet stupefied_nobel adoring_shockley confident_wiles
-'
+        sh 'docker rm admiring_johnson suspicious_panini elegant_buck determined_lederberg cool_sammet stupefied_nobel adoring_shockley confident_wiles'
 
         currentBuild.result = 'FAILURE'
         throw e // rethrow to mark the build as failed
