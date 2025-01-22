@@ -36,6 +36,8 @@ node {
             echo "Failed to get Docker container status: ${dockerError.getMessage()}"
         }
 
+        sh 'docker ps -a -q --filter "ancestor!=node:16-buster-slim" | xargs --no-run-if-empty docker rm'
+
         currentBuild.result = 'FAILURE'
         throw e // rethrow to mark the build as failed
     }
