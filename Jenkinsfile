@@ -39,7 +39,7 @@ node {
         } catch (dockerError) {
             echo "Failed to get Docker container status: ${dockerError.getMessage()}"
         }
-
+        sh 'docker images'
         currentBuild.result = 'FAILURE'
         throw e // rethrow to mark the build as failed
     } finally {
