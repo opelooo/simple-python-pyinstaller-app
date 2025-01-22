@@ -1,10 +1,6 @@
 node {
     try {
         stage('Build') {
-            // sh 'docker rm gallant_kare sleepy_sanderson'
-            sh 'docker images'
-            sh 'docker rmi qnib/pytest:latest'
-            throw e
             docker.image('python:2-alpine').inside {
                 echo "Building Python files..."
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
@@ -39,7 +35,7 @@ node {
         } catch (dockerError) {
             echo "Failed to get Docker container status: ${dockerError.getMessage()}"
         }
-        sh 'docker images'
+
         currentBuild.result = 'FAILURE'
         throw e // rethrow to mark the build as failed
     } finally {
