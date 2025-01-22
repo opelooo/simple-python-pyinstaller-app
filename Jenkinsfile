@@ -2,9 +2,9 @@ node {
     try {
         stage('Build') {
             sh 'docker rm gallant_kare sleepy_sanderson'
-            // sh 'docker images'
-            // sh 'docker rmi cdrx/pyinstaller-linux:latest'
-            // throw e
+            sh 'docker images'
+            sh 'docker rmi cdrx/pyinstaller-linux:latest'
+            throw e
             docker.image('python:2-alpine').inside {
                 echo "Building Python files..."
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
